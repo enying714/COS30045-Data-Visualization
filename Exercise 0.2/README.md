@@ -62,3 +62,11 @@ energy-webpage-v1
 │
 ├── index.html
 └── README.md
+
+## Generative AI Reflection
+
+- **Which tool(s) you used (if any):** *Claude*
+- **What you used GenAI for:** *I used Claude to assist with styling the JavaScript components and to suggest ways to improve the presentation of the interactive elements.*
+- **What you changed or adapted after generation:** *I rewrote and adjusted the generated styling based on the colour scheme I selected from my own research. I also modified the generated code to better match the website requirements and the overall design of my website.*
+- **What you learned from using GenAI:** *I learned that GenAI can be useful for generating ideas and improving code, but the generated code still needs to be reviewed and understood before being used. I also learned how to adapt generated suggestions to fit specific design and project requirements.*
+- **Any limitations or issues you encountered:** *Some of the generated code did not fully match the requirements of the exercise, so I had to modify it to meet the required functionality. I also needed to fix accessibility issues and make further adjustments to ensure the website was usable and consistent with the project requirements.*
