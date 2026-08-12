@@ -3,7 +3,7 @@
 // year into the footer. Shared by every page.
 
 document.addEventListener('DOMContentLoaded', function () {
-  // --- mobile nav toggle -------------------------------------------------
+  // mobile nav toggle
   var toggle = document.querySelector('.nav-toggle');
   var links = document.querySelector('.nav-links');
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- footer year ---------------------------------------------------------
+  // footer year
   var yearEl = document.getElementById('current-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();

@@ -1,8 +1,5 @@
 // faq.js
-// Simple accordion behaviour for the Home page FAQ section.
-// Each question is a <button aria-expanded="false"> controlling a sibling
-// answer panel. Only JavaScript toggles visibility; CSS just animates it.
-
+// Simple accordion behaviour for the Home page FAQ section
 document.addEventListener('DOMContentLoaded', function () {
   var questions = document.querySelectorAll('.faq-question');
 

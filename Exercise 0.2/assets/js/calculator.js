@@ -2,13 +2,11 @@
 // Interactive Appliance Energy Calculator.
 // Demonstrates: event handling, reading values from the DOM, calculations
 // with variables/functions, and dynamically updating existing DOM nodes.
-// No external libraries are used.
 
 (function () {
   'use strict';
 
-  // Placeholder wattage data. In Exercise 1 this would come from the real
-  // appliance data set - for now these are reasonable made-up figures.
+  // Placeholder wattage data
   var APPLIANCES = [
     { id: 'custom', name: 'Custom appliance (enter watts)', watts: null },
     { id: 'tv-led-43', name: 'LED TV - 43"', watts: 65 },
@@ -82,7 +80,7 @@
     return null;
   }
 
-  // --- validation ----------------------------------------------------------
+  // validation
 
   function validateField(input, min, max, message) {
     var wrapper = input.closest('.calc-field');
@@ -96,7 +94,7 @@
     return valid ? value : null;
   }
 
-  // --- main calculation ------------------------------------------------------
+  // main calculation
 
   function handleFormChange() {
     var watts = validateField(wattsField, 1, 20000, 'Enter a wattage between 1 and 20,000 W.');
@@ -147,8 +145,7 @@
     if (el) el.textContent = text;
   }
 
-  // --- persistence so the calculator survives a refresh ---------------------
-
+  // persistence so the calculator survives a refresh
   function saveInputs() {
     var data = {
       appliance: applianceSelect.value,
