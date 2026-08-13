@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (toggle && links) {
     toggle.addEventListener('click', function () {
       var isOpen = links.classList.toggle('open');
+      toggle.classList.toggle('active', isOpen);
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     links.addEventListener('click', function (event) {
       if (event.target.tagName === 'A') {
         links.classList.remove('open');
+        toggle.classList.remove('active');
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
