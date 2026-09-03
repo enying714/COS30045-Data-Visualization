@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Appliance Energy Consumption Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!--Navigation-->
+  <nav class="site-nav">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="img/PowerIcon.png" alt="TV Energy home">
+        TV Energy
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="televisions.html">Televisions</a></li>
+        <li><a href="data-story.html">Energy Visualization</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Hero-->
+  <header class="hero">
+    <div class="container">
+      <div>
+        <span class="eyebrow">Australian household energy</span>
+        <h1>Understand what your appliances cost to run.</h1>
+        <p class="lede">
+          Appliance Energy Consumption is a friendly demo site built for a COS30045 exercise. 
+          It looks at how everyday devices, starting with
+          televisions, quietly add up on an Australian power bill, and helps you estimate
+          the running cost of your own appliances.
+        </p>
+        <a href="#calculator" class="btn">Try the calculator</a>
+        <a href="televisions.html" class="btn btn-ghost">Compare TVs</a>
+        <a href="data-story.html" class="btn btn-ghost">View energy visualization</a>
+      </div>
+      <div class="meter-card">
+        <div class="meter-label">Example energy snapshot</div>
+        <div class="meter-readout">4.20<span class="unit">kWh today</span></div>
+        <div class="meter-sub">≈ $1.13 at 27c/kWh · illustrative data</div>
+      </div>
+    </div>
+  </header>
+
+  <!--Introduction content-->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why it matters</span>
+        <h2>Small appliances, big bills</h2>
+        <p>
+          Across Australian homes, entertainment and standby devices
+          are often left running for hours longer than people realise. This page collects
+          general information on appliance energy use, with televisions used as the
+          running example for this exercise. All figures on this site are illustrative
+          placeholder values, not verified market data.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <span class="eyebrow">Power usage</span>
+          <h3>Watts (W)</h3>
+          <p>
+            An appliance's wattage indicates how much electrical power it uses
+            while operating.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="eyebrow">Daily usage</span>
+          <h3>Hours / day</h3>
+          <p>
+            The amount of time an appliance is used each day affects its overall
+            energy consumption.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="eyebrow">Energy price</span>
+          <h3>c/kWh</h3>
+          <p>
+            Electricity prices can be used with energy consumption to estimate
+            the running cost of an appliance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Calculator (JS challenge)-->
+  <section class="section section-alt" id="calculator">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Interactive tool</span>
+        <h2>Appliance energy calculator</h2>
+        <p>
+          Select an appliance or enter your own power usage, then provide the average
+          hours of use per day and electricity price. The calculator will estimate
+          your daily, monthly and yearly energy consumption and running costs.
+        </p>
+      </div>
+
+      <form class="calculator" id="calculator-form" novalidate>
+        <div>
+          <div class="calc-field">
+            <label for="calc-appliance">Appliance</label>
+            <select id="calc-appliance"></select>
+            <p class="calc-hint">Choosing "Custom appliance" unlocks the watts field below.</p>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-watts">Power usage (watts)</label>
+            <input type="number" id="calc-watts" min="1" max="20000" step="1" value="65">
+            <p class="calc-error" aria-live="polite"></p>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-hours">Average hours used per day</label>
+            <input type="number" id="calc-hours" min="0" max="24" step="0.5" value="4">
+            <p class="calc-error" aria-live="polite"></p>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-price">Electricity price (cents per kWh)</label>
+            <input type="number" id="calc-price" min="1" max="200" step="0.5" value="27">
+            <p class="calc-error" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="calc-results">
+          <h3>Estimated consumption</h3>
+          <div id="calc-results-body">
+            <div class="result-row">
+              <span class="result-label">Daily energy</span>
+              <span class="result-value" id="result-daily-kwh">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Monthly energy</span>
+              <span class="result-value" id="result-monthly-kwh">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Yearly energy</span>
+              <span class="result-value" id="result-yearly-kwh">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Monthly cost</span>
+              <span class="result-value" id="result-monthly-cost">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Yearly cost</span>
+              <span class="result-value" id="result-yearly-cost">—</span>
+            </div>
+          </div>
+          <p class="calc-status" id="calc-status">Enter values to calculate.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!--FAQ-->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-q-1">
+            Where do these figures come from?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-q-1">
+            <p>
+              The table shown on this website are illustrative examples used for this
+              exercise. A real appliance energy dataset will be introduced in a later exercise.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-q-2">
+            Can I use this calculator for any appliance?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-q-2">
+            <p>
+              The calculator ships with a handful of sample appliances, or you can select "Custom appliance"
+              and enter any wattage yourself.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-q-3">
+            Is this site connected to a real electricity retailer?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-q-3">
+            <p>
+              No, this is a student exercise built to practise HTML, CSS and JavaScript, and is not connected to any live pricing data.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Footer-->
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="current-year"></span> <strong>Cheong En Ying</strong> — Appliance Energy Consumption Website</span>
+      <span>Built for COS30045 Exercise</span>
+      <p class="footer-ai-note">
+        Generative AI acknowledgement: Claude was used to assist with aspects of the
+        JavaScript styling. The generated suggestions were reviewed, tested and
+        adapted by the author. See README.md for the full reflection.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/faq.js"></script>
+  <script src="js/calculator.js"></script>
+</body>
+</html>

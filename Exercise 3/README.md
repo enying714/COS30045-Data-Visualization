@@ -1,104 +1,77 @@
-# Exercise 3 – Data Story: TV Energy Consumption
-
-## Overview
-
-In this exercise, you will develop a **data story** based on the **TV Energy Consumption dataset**. Using the website created in **Exercise 0.2**, you will extend your work to present a meaningful narrative supported by data visualisations.
-
-Your goal is to communicate insights from the dataset in a clear and engaging way through your **website and written explanation**.
-
-You must use the **Exercise 3 folder in your existing forked repository** and reuse the files created in **Exercise 0.2**.
-
----
+# Exercise 3 – TV Energy Consumption Data Story
 
 ## Data Story
 
 ### Audience
 
-The target audience for this visualisation includes:
+The primary audience is Australian household consumers who are comparing televisions and care about both purchase suitability and ongoing electricity use. They may understand an energy label but are unlikely to want a technical statistical analysis. A secondary audience is energy educators who need a simple example for explaining efficient purchasing.
 
-- Consumers interested in **energy-efficient televisions**
-- Policy makers and regulators interested in **energy consumption trends**
-- Researchers studying **energy efficiency in consumer electronics**
+The audience's most important question is: **Which TV choices are likely to use more energy each year?** Screen size is therefore introduced before display technology, because it produces the clearest and most actionable pattern.
 
-These audiences are interested in understanding how **television energy consumption varies across models, sizes, and technologies**, and how these factors influence overall energy usage.
+### Audience interests
 
-### Story Overview
+The audience wants to know:
 
-This visualisation explores patterns in **TV energy consumption** across different television models and specifications.
+- how average labelled annual energy consumption changes as screens become larger;
+- whether LCD, LCD (LED), and OLED televisions show the same size pattern;
+- how to interpret a missing category without mistaking it for zero; and
+- what practical decision can reduce likely energy consumption.
 
-The goal is to help viewers understand:
+### Visualisation story guidelines
 
-- How energy consumption varies between television models
-- The relationship between **screen size and power consumption**
-- How **energy efficiency ratings** impact energy usage
-- Trends that may help consumers choose more **energy-efficient televisions**
+- Lead with one consumer decision: choose an appropriate screen size.
+- Use plain language and show `kWh/year` beside every energy measure.
+- Begin quantitative bars at zero and show the group values directly.
+- Move from the main pattern (size) to the nuance (technology).
+- State sample sizes, category definitions, and missing combinations.
+- Separate association from causation and standard label values from actual household bills.
+- Finish with a realistic action rather than telling every reader to buy one technology.
 
-The website presents these insights through visualisations and explanatory text that guide the viewer through the data.
+### Story structure
 
----
+The six-box storyboard on the website follows this sequence: introduce hidden running cost, demonstrate the size effect with Visualisation 1, explain the 4.7× difference, add technology detail with Visualisation 2, state interpretation limits, and recommend right-sizing first and comparing labels second.
 
 ## About the Data
 
-### Data Source
+### Data source
 
-The dataset used in this project contains information about **television models and their energy consumption characteristics**, including power usage, screen size, technology type, and efficiency ratings.
+The supplied KNIME workflow contains `tv_2026_02_15.csv`, a snapshot of 4,724 television registration records. Its fields include brand, model, markets sold in, screen size, screen technology, standby and average-mode power, star rating, labelled annual energy consumption, availability, registration number, test standard, and regulatory standard. The records reference the Australian Energy Rating registration system and the *Greenhouse and Energy Minimum Standards (Televisions) Determination 2013*.
 
-The dataset was provided as part of the course materials.
+### Data processing
 
-### Data Processing
+The KNIME workflow:
 
-Before creating visualisations, the dataset was processed to ensure it was suitable for analysis. This included:
+1. reads the source CSV and selects relevant columns;
+2. cleans text values;
+3. filters records by availability and Australian market where required;
+4. converts screen size from centimetres to inches (`screensize / 2.54`);
+5. rounds screen size for presentation;
+6. classifies screens as small (≤43 inches), medium (44–65 inches), or large (>65 inches); and
+7. aggregates labelled energy consumption using averages for the charts.
 
-- Cleaning missing or inconsistent values
-- Selecting relevant attributes for visualisation
-- Organising the data into formats suitable for web visualisation
+Visualisation 1 uses all 4,724 embedded records to show the average for each derived size group: small 158.0 kWh/year (n=1,158), medium 402.3 (n=2,179), and large 743.0 (n=1,387). Visualisation 2 is the supplied grouped KNIME chart comparing screen technology within those size categories.
 
 ### Privacy
 
-The dataset does not contain any **personal or sensitive information**. It focuses solely on product specifications and energy consumption data related to television devices.
+The data describes registered television products, not people. It contains no names, household addresses, account information, or individual usage records. Product and company identifiers are public-facing attributes rather than personal information.
 
-### Accuracy and Limitations
+### Accuracy and limitations
 
-While the dataset provides useful information about TV energy consumption, there are some limitations:
-
-- The dataset may not include **all available television models**
-- Some information may be **outdated or incomplete**
-- Energy consumption may vary depending on **real-world usage conditions**
-
-These factors should be considered when interpreting the visualisations.
+- The data is a registration snapshot and may not represent every television currently sold or purchased.
+- A record can be registered for multiple markets, and 14 of the 4,724 embedded records are marked unavailable.
+- Averages can be influenced by the number and mix of models in each group; the charts do not prove screen size or technology alone causes a particular result.
+- Labelled kWh/year is based on a regulatory test method. Actual household consumption varies with viewing time, brightness, picture settings, standby behaviour, and electricity supply.
+- The custom size boundaries are analytical choices, not universal industry categories.
+- No small OLED result appears in the grouped chart; absence should not be read as zero consumption.
 
 ### Ethics
 
-When presenting data visualisations, it is important to ensure that the information is represented **accurately and responsibly**.
-
-This project follows ethical data visualisation practices by:
-
-- Avoiding misleading visual representations
-- Clearly explaining the context of the data
-- Presenting information transparently so viewers can interpret the results correctly
-
----
+The story uses a zero baseline, visible units, direct labels, category definitions, sample sizes, and limitations to reduce the risk of misleading comparisons. It avoids claiming that one technology is always efficient and does not turn regulatory estimates into promises about a household's bill. The recommendation asks shoppers to compare similarly sized models and their labels.
 
 ## AI Declaration
 
-Artificial Intelligence (AI) tools may have been used to assist with aspects of this assignment, such as:
+ChatGPT was used to inspect the supplied KNIME workflow, calculate summary values from its embedded dataset, help structure the six-box storyboard, draft explanatory text, and assist with the HTML and CSS implementation. The existing KNIME workflow also declares that ChatGPT assisted with the syntax and logic of the expression used to classify screen sizes. All generated material and calculated values should be reviewed by the student against the source workflow before submission, and responsibility for the final work remains with the student.
 
-- Generating example code
-- Improving code structure
-- Assisting with documentation writing
+## Website
 
-All AI-generated assistance was reviewed, modified where necessary, and integrated responsibly into the project.
-
----
-
-## Website Storytelling
-
-The website has been updated to communicate a **data-driven story** based on the TV energy consumption dataset.
-
-The website includes:
-
-- Visualisations that present key insights from the dataset
-- Text explanations that help readers understand the meaning of the visualisations
-- Context that connects the data to real-world implications
-
-The aim is to guide the viewer through the data in a way that is **informative, engaging, and easy to understand**.
+Open `data-story.html` in this folder to view the Exercise 3 story. The separate page contains two visualisations, with one six-box storyboard for each visualisation, plus contextual text and a practical conclusion. The original Exercise 0.2 television page remains separate in `televisions.html`. No KNIME workflow or additional folder was added to Exercise 3.
