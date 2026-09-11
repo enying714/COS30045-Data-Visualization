@@ -198,7 +198,8 @@ img { max-width: 100%; display: block; }
 
 /* hero */
 .hero {
-  background: linear-gradient(160deg, var(--peach-light) 0%, var(--amber-bright) 55%, var(--cream) 100%);
+  /* Match the SVG Exercise page header with one solid title background. */
+  background: var(--peach-light);
   color: var(--ink);
   padding: 64px 0 80px;
   position: relative;
