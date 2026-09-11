@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Televisions | Appliance Energy Consumption Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!--Navigation-->
+  <nav class="site-nav">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="img/PowerIcon.png" alt="TV Energy home">
+        TV Energy
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="televisions.html" aria-current="page">Televisions</a></li>
+        <li><a href="svg-exercise.html">SVG Exercise</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Page header-->
+  <header class="hero">
+    <div class="container page-header-content">
+      <div>
+        <span class="eyebrow">Case study</span>
+        <h1>Televisions and energy use</h1>
+        <p class="lede">
+            Televisions are common appliances in Australian households, and their energy
+            consumption can vary depending on screen size, display technology and usage
+            time. The table below compares several sample TV models and their estimated
+            power consumption.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Comparison table ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">TV energy use</span>
+        <h2>Sample TV models by power draw</h2>
+        <p>
+          The table below uses illustrative values to demonstrate how television
+          power consumption can vary between different screen sizes and panel types.
+          These values are not verified manufacturer specifications.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Screen size</th>
+              <th>Panel type</th>
+              <th class="num">Typical draw</th>
+              <th class="num">Standby draw</th>
+              <th>Efficiency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Aurora S43</td>
+              <td>43&Prime;</td>
+              <td>LED</td>
+              <td class="num">65 W</td>
+              <td class="num">0.5 W</td>
+              <td><span class="tag tag-good">Efficient</span></td>
+            </tr>
+            <tr>
+              <td>Meridian Q55</td>
+              <td>55&Prime;</td>
+              <td>QLED</td>
+              <td class="num">120 W</td>
+              <td class="num">0.8 W</td>
+              <td><span class="tag tag-mid">Average</span></td>
+            </tr>
+            <tr>
+              <td>Umbra O55</td>
+              <td>55&Prime;</td>
+              <td>OLED</td>
+              <td class="num">110 W</td>
+              <td class="num">0.6 W</td>
+              <td><span class="tag tag-mid">Average</span></td>
+            </tr>
+            <tr>
+              <td>Zenith Q65</td>
+              <td>65&Prime;</td>
+              <td>QLED</td>
+              <td class="num">150 W</td>
+              <td class="num">1.0 W</td>
+              <td><span class="tag tag-high">Higher draw</span></td>
+            </tr>
+            <tr>
+              <td>Ridgeline L32</td>
+              <td>32&Prime;</td>
+              <td>LED</td>
+              <td class="num">38 W</td>
+              <td class="num">0.4 W</td>
+              <td><span class="tag tag-good">Efficient</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="calculator-link">
+        Want to see what one of these might cost you? Head to the
+        <a href="index.html#calculator">energy calculator on the Home page</a> and select a
+        similar model.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Energy-saving tips</span>
+        <h2>Reducing TV running costs</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="eyebrow">Tip 01</span>
+          <h3>Turn off at the wall</h3>
+          <p>
+            Standby power is usually small for a single device, but switching appliances
+            off when they are not needed can help reduce unnecessary electricity use.
+          </p>
+        </div>
+        <div class="card">
+          <span class="eyebrow">Tip 02</span>
+          <h3>Lower the brightness</h3>
+          <p>
+            Reducing screen brightness can help lower the power consumed by some
+            television displays.
+          </p>
+        </div>
+        <div class="card">
+          <span class="eyebrow">Tip 03</span>
+          <h3>Match size to the room</h3>
+          <p>Larger panels generally draw more power regardless of technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Footer-->
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="current-year"></span> <strong>Cheong En Ying</strong> — Appliance Energy Consumption Website</span>
+      <span>Built for COS30045 Exercise</span>
+      <p class="footer-ai-note">
+        Generative AI acknowledgement: Claude was used to assist with aspects of the
+        JavaScript styling. The generated suggestions were reviewed, tested and
+        adapted by the author. See README.md for the full reflection.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>
