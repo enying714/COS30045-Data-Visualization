@@ -16,6 +16,8 @@ Add category and value labels to the scaled D3 bar chart.
 - Reserves space at the left of the chart for brand labels.
 - Joins each data row to a `<g>` element so its rectangle and labels move together.
 - Places the brand name before each bar and the exact count after it.
+- Uses the website's deep orange colour for the bars instead of the default blue.
+- Displays the completed chart on the Exercise 4 page with the SVG work.
 
 The completed chart displays all 25 brands in descending order with both category and value labels.
 

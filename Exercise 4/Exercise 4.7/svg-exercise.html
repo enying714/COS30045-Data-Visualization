@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="COS30045 Exercise 4.1 demonstrating SVG shapes, groups, coordinates and styling.">
-  <title>Exercise 4.1 | SVG House and Garden</title>
+  <title>Exercise 4 | SVG and D3</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="televisions.html">Televisions</a></li>
-        <li><a href="svg-exercise.html" aria-current="page">SVG Exercise</a></li>
+        <li><a href="svg-exercise.html" aria-current="page">Exercise 4</a></li>
         <li><a href="about.html">About Us</a></li>
       </ul>
     </div>
@@ -191,9 +191,27 @@
 &lt;/g&gt;</code></pre><p>The coordinates inside the group are local. The translation moves both windows 370 units right and 365 units down together.</p></div>
       </div>
     </section>
+
+    <!-- Exercise 4.7: the completed D3 bar chart with category and value labels. -->
+    <section class="section section-alt" id="d3-practice">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Exercise 4.7 · Adding labels</span>
+          <h2>TV Brand Data Count with Labels</h2>
+          <p>Each row groups a brand name, its themed count bar and its exact value. The labels make the sorted TV brand comparison readable without inspecting the CSV or page code.</p>
+          <p id="csv-status" role="status">Loading CSV data…</p>
+        </div>
+        <!-- D3 creates the SVG and groups each rectangle with its two labels. -->
+        <div class="responsive-svg-container"></div>
+        <noscript>Enable JavaScript to see the D3 chart.</noscript>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer"><div class="container"><span>© <span id="current-year"></span> <strong>Cheong En Ying</strong> — SVG House and Garden</span><span>COS30045 Exercise 4.1</span><p class="footer-ai-note">Generative AI acknowledgement: ChatGPT/Codex assisted with the SVG structure, coordinate annotations and webpage code. The output was reviewed and customised by the author.</p></div></footer>
   <script src="js/nav.js"></script>
+  <!-- Load D3 before the chart code that uses it. -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

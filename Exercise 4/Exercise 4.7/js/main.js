@@ -77,7 +77,7 @@ function drawBarChart(data) {
     .attr("class", d => `bar bar-${d.count}`)
     .attr("width", d => xScale(d.count))
     .attr("height", yScale.bandwidth())
-    .attr("fill", "blue")
+    .attr("fill", "#D27D2D")
     .attr("x", margin.left)
     .attr("y", 0);
 
