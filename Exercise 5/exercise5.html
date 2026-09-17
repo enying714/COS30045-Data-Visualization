@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Exercise 5 D3 bar, scatter, line and donut charts for television and Australian electricity data.">
+  <title>Exercise 5 | TV Energy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Shared TV Energy navigation. -->
+  <nav class="site-nav">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/img/PowerIcon.png" alt="TV Energy home">
+        TV Energy
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="televisions.html">Televisions</a></li>
+        <li><a href="exercise5.html" aria-current="page">Exercise 5</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Exercise title. -->
+  <header class="hero">
+    <div class="container">
+      <div>
+        <span class="eyebrow">COS30045 · Exercises 5.1–5.3</span>
+        <h1>D3 charts</h1>
+        <p class="lede">
+          Compare 55-inch TV energy consumption, then examine how Australian
+          average wholesale electricity prices changed from 1998 to 2024 and
+          explore the proportion of small, medium and large TV models.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- D3 inserts the responsive SVG inside this dedicated chart container. -->
+    <section class="section" id="exercise-5-1">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Screen technology comparison</span>
+          <h2>Energy consumption by screen technology</h2>
+          <p>The chart uses a band scale for the categories and a linear scale for annual energy consumption.</p>
+          <p id="bar-chart-status" role="status">Loading chart data…</p>
+        </div>
+        <div id="bar-chart" class="responsive-svg-container"></div>
+        <noscript>Enable JavaScript to view the D3 bar chart.</noscript>
+      </div>
+    </section>
+
+    <!-- Exercise 5.2 uses circles for a scatter plot and a path for the line. -->
+    <section class="section section-alt" id="exercise-5-2">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Exercise 5.2 · Scatter plot and line chart</span>
+          <h2>Average Australian electricity spot price</h2>
+          <p>
+            Each point represents the annual average price across Queensland,
+            New South Wales, Victoria and South Australia. The connecting line
+            shows how the value changed between 1998 and 2024.
+          </p>
+          <p id="line-chart-status" role="status">Loading chart data…</p>
+        </div>
+        <div id="line-chart" class="responsive-svg-container"></div>
+        <noscript>Enable JavaScript to view the D3 scatter plot and line chart.</noscript>
+      </div>
+    </section>
+
+    <!-- Exercise 5.3 uses D3 pie calculations and arc paths to form a donut. -->
+    <section class="section" id="exercise-5-3">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Exercise 5.3 · Donut chart</span>
+          <h2>TV models by screen-size category</h2>
+          <p>
+            The donut shows the proportion of TV models classified as small,
+            medium or large. Slice sizes represent the number of models in each category.
+          </p>
+          <p id="donut-chart-status" role="status">Loading chart data…</p>
+        </div>
+        <div id="donut-chart" class="responsive-svg-container"></div>
+        <noscript>Enable JavaScript to view the D3 donut chart.</noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="current-year"></span> <strong>Cheong En Ying</strong> — TV Energy</span>
+      <span>Built for COS30045 Exercises 5.1–5.3</span>
+      <p class="footer-ai-note">
+        Generative AI acknowledgement: ChatGPT/Codex assisted with the D3 chart structure,
+        code comments and webpage integration. The output was reviewed and adapted by the author.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/nav.js"></script>
+  <!-- Load D3 before the separate chart file that uses it. -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="assets/js/bar-chart.js"></script>
+  <script src="assets/js/line-chart.js"></script>
+  <script src="assets/js/donut-chart.js"></script>
+</body>
+</html>
