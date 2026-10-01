@@ -23,6 +23,8 @@ The histogram displays the frequency distribution of annual television energy co
 Screen-technology controls allow users to filter the histogram.
 
 - Includes All, LCD, LED and OLED filter buttons.
+- Includes the extension filters for 24, 32, 55, 65 and 98-inch screens.
+- Combines screen-technology and screen-size selections.
 - Animates the bars when the selected technology changes.
 - Dynamically rescales the frequency axis for smaller filtered datasets.
 - Displays exact counts above non-empty filtered bars.

@@ -48,7 +48,8 @@
         <h2>Frequency of annual energy consumption</h2>
         <p>
           Each bar groups televisions into a 200 kWh/year interval. Select a screen
-          technology to update the histogram, then hover over a bar to see its exact range.
+          technology, screen size or both to update the histogram, then hover over a bar
+          to see its exact range.
           The frequency axis automatically rescales so smaller groups remain easy to read.
         </p>
       </div>
@@ -64,6 +65,10 @@
         <div class="filter-panel" aria-labelledby="screen-filter-label">
           <span id="screen-filter-label" class="filter-label">Filter by screen technology</span>
           <div id="filters_screen" class="filters" role="group" aria-labelledby="screen-filter-label"></div>
+        </div>
+        <div class="filter-panel" aria-labelledby="size-filter-label">
+          <span id="size-filter-label" class="filter-label">Filter by screen size</span>
+          <div id="filters_size" class="filters" role="group" aria-labelledby="size-filter-label"></div>
         </div>
         <div id="histogram" class="responsive-svg-container"></div>
         <div id="histogram-tooltip" class="chart-tooltip" role="tooltip" aria-hidden="true"></div>

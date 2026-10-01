@@ -29,6 +29,15 @@ const screenTechnologyFilters = [
   { id: 'OLED', label: 'OLED', isActive: false }
 ];
 
+const screenSizeFilters = [
+  { id: 'all', label: 'All sizes', value: null, isActive: true },
+  { id: '24', label: '24″', value: 24, isActive: false },
+  { id: '32', label: '32″', value: 32, isActive: false },
+  { id: '55', label: '55″', value: 55, isActive: false },
+  { id: '65', label: '65″', value: 65, isActive: false },
+  { id: '98', label: '98″', value: 98, isActive: false }
+];
+
 const scatterplotConfig = {
   width: 1000,
   height: 560,

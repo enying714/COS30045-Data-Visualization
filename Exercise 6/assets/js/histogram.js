@@ -61,10 +61,11 @@ function updateHistogram(data, filterLabel, isInitialDraw = false) {
   const bins = histogramBinGenerator(data);
   const innerChart = d3.select('.histogram-inner-chart');
   const maximumBinCount = d3.max(bins, bin => bin.length) || 1;
+  const labelHeadroom = Math.max(1, Math.ceil(maximumBinCount * 0.14));
   const duration = isInitialDraw ? 800 : 600;
 
   histogramYScale
-    .domain([0, maximumBinCount])
+    .domain([0, maximumBinCount + labelHeadroom])
     .nice();
 
   const chartTransition = d3.transition()
@@ -73,7 +74,9 @@ function updateHistogram(data, filterLabel, isInitialDraw = false) {
 
   innerChart.select('.histogram-y-axis')
     .transition(chartTransition)
-    .call(d3.axisLeft(histogramYScale).ticks(6).tickFormat(d3.format('d')));
+    .call(d3.axisLeft(histogramYScale)
+      .ticks(Math.min(6, maximumBinCount))
+      .tickFormat(d3.format('d')));
 
   const bars = innerChart.selectAll('.histogram-bar')
     .data(bins, bin => bin.x0)
@@ -126,8 +129,17 @@ function updateHistogram(data, filterLabel, isInitialDraw = false) {
       exit => exit.transition(chartTransition).attr('opacity', 0).remove()
     );
 
+  innerChart.selectAll('.histogram-empty-state')
+    .data(data.length === 0 ? [filterLabel] : [])
+    .join('text')
+    .attr('class', 'histogram-empty-state')
+    .attr('x', config.innerWidth / 2)
+    .attr('y', config.innerHeight / 2)
+    .attr('text-anchor', 'middle')
+    .text(label => `No televisions match ${label}`);
+
   attachHistogramInteractions(bars);
 
   d3.select('#histogram-status')
-    .text(`${d3.format(',')(data.length)} ${filterLabel === 'All' ? '' : `${filterLabel} `}television records · 200 kWh/year bins`);
+    .text(`${d3.format(',')(data.length)} television records · ${filterLabel} · 200 kWh/year bins`);
 }

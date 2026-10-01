@@ -33,31 +33,52 @@ function attachHistogramInteractions(bars) {
 }
 
 function populateFilters(data) {
-  const buttons = d3.select('#filters_screen')
-    .selectAll('button')
-    .data(screenTechnologyFilters)
-    .join('button')
-    .attr('type', 'button')
-    .attr('class', 'filter')
-    .classed('active', filter => filter.isActive)
-    .attr('aria-pressed', filter => String(filter.isActive))
-    .text(filter => filter.label);
+  function applyActiveFilters() {
+    const activeTechnology = screenTechnologyFilters.find(filter => filter.isActive);
+    const activeSize = screenSizeFilters.find(filter => filter.isActive);
+    let updatedData = data;
 
-  buttons.on('click', function (event, selectedFilter) {
-    screenTechnologyFilters.forEach(filter => {
-      filter.isActive = filter.id === selectedFilter.id;
-    });
+    if (activeTechnology.id !== 'all') {
+      updatedData = updatedData.filter(row => row.screenTech === activeTechnology.id);
+    }
 
-    buttons
+    if (activeSize.id !== 'all') {
+      updatedData = updatedData.filter(row => row.screenSize === activeSize.value);
+    }
+
+    const activeLabels = [];
+    if (activeTechnology.id !== 'all') activeLabels.push(activeTechnology.label);
+    if (activeSize.id !== 'all') activeLabels.push(activeSize.label);
+
+    updateHistogram(updatedData, activeLabels.length ? activeLabels.join(' · ') : 'All');
+  }
+
+  function buildFilterGroup(containerId, filterOptions) {
+    const buttons = d3.select(containerId)
+      .selectAll('button')
+      .data(filterOptions)
+      .join('button')
+      .attr('type', 'button')
+      .attr('class', 'filter')
       .classed('active', filter => filter.isActive)
-      .attr('aria-pressed', filter => String(filter.isActive));
+      .attr('aria-pressed', filter => String(filter.isActive))
+      .text(filter => filter.label);
 
-    const updatedData = selectedFilter.id === 'all'
-      ? data
-      : data.filter(row => row.screenTech === selectedFilter.id);
+    buttons.on('click', function (event, selectedFilter) {
+      filterOptions.forEach(filter => {
+        filter.isActive = filter.id === selectedFilter.id;
+      });
 
-    updateHistogram(updatedData, selectedFilter.label);
-  });
+      buttons
+        .classed('active', filter => filter.isActive)
+        .attr('aria-pressed', filter => String(filter.isActive));
+
+      applyActiveFilters();
+    });
+  }
+
+  buildFilterGroup('#filters_screen', screenTechnologyFilters);
+  buildFilterGroup('#filters_size', screenSizeFilters);
 }
 
 function createTooltip() {
@@ -132,21 +153,14 @@ function handleMouseEvents() {
       .duration(160)
       .style('opacity', 1);
 
-    point.raise()
-      .interrupt()
-      .transition()
-      .duration(140)
-      .attr('r', scatterplotConfig.pointRadius * 2)
-      .style('opacity', 1);
+    innerChartS.selectAll('.scatter-point').classed('is-active', false);
+    point.raise().classed('is-active', true);
   }
 
   function hideTooltip(event) {
     d3.select(event.currentTarget)
       .interrupt()
-      .transition()
-      .duration(140)
-      .attr('r', scatterplotConfig.pointRadius)
-      .style('opacity', null);
+      .classed('is-active', false);
 
     tooltip
       .attr('aria-hidden', 'true')
@@ -157,6 +171,16 @@ function handleMouseEvents() {
   }
 
   innerChartS.selectAll('.scatter-point')
-    .on('mouseenter', showTooltip)
-    .on('mouseleave', hideTooltip);
+    .on('pointerenter', showTooltip)
+    .on('pointerleave', hideTooltip);
+
+  innerChartS.on('pointerleave.scatterplot-reset', function () {
+    innerChartS.selectAll('.scatter-point').classed('is-active', false);
+    tooltip
+      .attr('aria-hidden', 'true')
+      .interrupt()
+      .transition()
+      .duration(180)
+      .style('opacity', 0);
+  });
 }
