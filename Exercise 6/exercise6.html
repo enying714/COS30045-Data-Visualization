@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 6 | TV Energy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/visualisation.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/img/PowerIcon.png" alt="TV Energy home">
+        TV Energy
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="televisions.html">Televisions</a></li>
+        <li><a href="exercise6.html" aria-current="page">Exercise 6</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero exercise-hero">
+    <div class="container page-header-content">
+      <div>
+        <span class="eyebrow">COS30045 · Exercises 6.1 to 6.4</span>
+        <h1>TV energy consumption histogram</h1>
+        <p class="lede">
+          Explore how annual energy consumption is distributed across televisions
+          in the Australian appliance energy-rating dataset.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Exercise 6.2 · Interactive filters</span>
+        <h2>Frequency of annual energy consumption</h2>
+        <p>
+          Each bar groups televisions into a 200 kWh/year interval. Select a screen
+          technology to update the histogram, then hover over a bar to see its exact range.
+          The frequency axis automatically rescales so smaller groups remain easy to read.
+        </p>
+      </div>
+
+      <section class="chart-card" aria-labelledby="histogram-title">
+        <div class="chart-heading">
+          <div>
+            <h3 id="histogram-title">Televisions by energy-consumption range</h3>
+            <p id="histogram-status" class="chart-status" role="status">Loading television data…</p>
+          </div>
+          <span class="chart-unit">Annual energy consumption</span>
+        </div>
+        <div class="filter-panel" aria-labelledby="screen-filter-label">
+          <span id="screen-filter-label" class="filter-label">Filter by screen technology</span>
+          <div id="filters_screen" class="filters" role="group" aria-labelledby="screen-filter-label"></div>
+        </div>
+        <div id="histogram" class="responsive-svg-container"></div>
+        <div id="histogram-tooltip" class="chart-tooltip" role="tooltip" aria-hidden="true"></div>
+      </section>
+
+      <div class="section-head chart-section-head">
+        <span class="eyebrow">Exercises 6.3 and 6.4 · Scatterplot and tooltips</span>
+        <h2>Energy consumption by star rating</h2>
+        <p>
+          Each point represents one television. Its position compares energy consumption
+          with star rating, while colour identifies the screen technology. Hover over a point
+          to inspect its model, screen size and energy information.
+        </p>
+      </div>
+
+      <section class="chart-card" aria-labelledby="scatterplot-title">
+        <div class="chart-heading">
+          <div>
+            <h3 id="scatterplot-title">TV efficiency and annual energy consumption</h3>
+            <p id="scatterplot-status" class="chart-status" role="status">Loading television data…</p>
+          </div>
+          <span class="chart-unit">Colour indicates screen type</span>
+        </div>
+        <div id="scatterplot" class="responsive-svg-container"></div>
+      </section>
+
+      <div class="data-note">
+        <h3>About the data</h3>
+        <p>
+          The dataset contains television brand, model, screen size, screen technology,
+          star rating and annual energy consumption. The high-consumption outlier is kept
+          in the chart so the full supplied dataset remains represented.
+        </p>
+        <p>
+          Source: <a href="https://data.gov.au/data/dataset/energy-rating-for-household-appliances">Energy Rating Data for Household Appliances — Televisions</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="current-year"></span> <strong>Cheong En Ying</strong> — TV Energy</span>
+      <span>Built for COS30045 Exercise 6</span>
+    </div>
+  </footer>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/load-data.js"></script>
+  <script src="assets/js/shared-constants.js"></script>
+  <script src="assets/js/interactions.js"></script>
+  <script src="assets/js/histogram.js"></script>
+  <script src="assets/js/scatterplot.js"></script>
+</body>
+</html>
